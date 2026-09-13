@@ -6,7 +6,7 @@
 <title>Ariana Carreras Espinosa · Salud Pública</title>
 <meta name="description" content="Educación que despierta conciencia. Conciencia que impulsa acción. Talleres de TDAH, salud pública y determinantes sociales, y participación ciudadana." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Petit+Formal+Script&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -40,7 +40,7 @@
     letter-spacing: -0.01em;
   }
 
-  .container { max-width: 920px; margin: 0 auto; padding: 0 32px; }
+  .container { max-width: 920px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
   a { color: inherit; }
 
   .nav { display: flex; align-items: center; justify-content: space-between; padding: 28px 32px; max-width: 984px; margin: 0 auto; }
@@ -50,12 +50,13 @@
   .nav-links a:hover { color: var(--olive-deep); }
   @media (max-width: 620px) { .nav-links { gap: 16px; font-size: 13px; } }
 
-  .hero { padding: 48px 0 88px; }
+  .hero { padding: 48px 0 88px; position: relative; overflow: hidden; }
   .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items: center; }
   .status-row { display: flex; align-items: center; gap: 9px; margin-bottom: 22px; font-size: 14px; color: var(--ink-soft); }
   .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--olive); flex-shrink: 0; }
   .hero h1 { font-size: clamp(34px, 5vw, 50px); line-height: 1.12; }
-  .hero-sub { margin-top: 22px; max-width: 46ch; color: var(--ink-soft); font-size: 17px; }
+  .hero-sub { margin-top: 22px; max-width: 50ch; color: var(--ink-soft); font-size: 16.5px; }
+  .hero-sub + .hero-sub { margin-top: 14px; }
   .hero-actions { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
   .btn { display: inline-block; padding: 13px 26px; border-radius: 999px; font-size: 14.5px; font-weight: 500; text-decoration: none; cursor: pointer; border: 1px solid transparent; font-family: 'Work Sans', sans-serif; }
   .btn-solid { background: var(--olive-deep); color: var(--bone); }
@@ -65,23 +66,36 @@
 
   .badge-wrap { justify-self: center; position: relative; width: 210px; height: 210px; }
   .badge-ring { position: absolute; inset: -14px; border: 1.5px solid var(--olive); border-radius: 50%; }
-  .badge { width: 100%; height: 100%; border-radius: 50%; background: var(--olive-deep); color: var(--bone); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 54px; font-weight: 500; }
+  .badge { width: 100%; height: 100%; border-radius: 50%; background: var(--olive-deep); color: var(--bone); display: flex; align-items: center; justify-content: center; font-family: 'Petit Formal Script', cursive; font-size: 72px; font-weight: 400; letter-spacing: 0.01em; padding-top: 6px; }
 
   @media (max-width: 720px) {
     .hero-grid { grid-template-columns: 1fr; gap: 40px; }
     .badge-wrap { width: 150px; height: 150px; justify-self: start; }
-    .badge { font-size: 40px; }
+    .badge { font-size: 52px; }
   }
 
-  .credenciales { padding: 40px 0 56px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .cred-item { font-size: 17px; padding: 6px 0; }
-  .cred-item strong { font-weight: 600; }
-  .cred-item + .cred-item { margin-top: 2px; }
+  .credenciales { padding: 56px 0 64px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .cred-heading { font-size: 15px; color: var(--ink-soft); font-family: 'Work Sans', sans-serif; font-weight: 600; margin-bottom: 28px; }
+  .cred-list { position: relative; padding-left: 4px; }
+  .cred-list::before { content: ""; position: absolute; left: 5px; top: 12px; bottom: 12px; width: 1.5px; background: var(--line); }
+  .cred-row { position: relative; display: flex; align-items: flex-start; gap: 22px; padding: 16px 0; }
+  .cred-dot { position: relative; z-index: 1; width: 11px; height: 11px; border-radius: 50%; background: var(--olive); margin-top: 5px; flex-shrink: 0; box-shadow: 0 0 0 4px var(--bone); }
+  .cred-dot-active { background: var(--clay); }
+  .cred-text strong { display: block; font-size: 17.5px; font-family: 'Fraunces', serif; font-weight: 600; }
+  .cred-text span { display: block; margin-top: 5px; font-size: 14px; line-height: 1.45; color: var(--ink-soft); }
 
-  .section { padding: 84px 0; }
-  .section-head { margin-bottom: 44px; max-width: 60ch; }
+  .section { padding: 84px 0; position: relative; overflow: hidden; }
+  .section-head { margin-bottom: 44px; max-width: 60ch; position: relative; z-index: 1; }
   .section-head h2 { font-size: 30px; }
   .section-head p { margin-top: 14px; color: var(--ink-soft); font-size: 16px; }
+
+  .deco-ring { position: absolute; border-radius: 50%; border: 1.5px solid var(--olive); opacity: 0.3; pointer-events: none; }
+  .deco-ring-clay { border-color: var(--clay); }
+  .deco-ring-light { border-color: rgba(245, 240, 230, 0.3); opacity: 1; }
+  .deco-dots { position: absolute; display: flex; gap: 9px; pointer-events: none; }
+  .deco-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--olive); opacity: 0.45; }
+  .deco-line { position: absolute; background: var(--line); pointer-events: none; }
+  .medios-sub { margin-top: 48px; position: relative; z-index: 1; }
 
   .taller { padding: 30px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1.6fr; gap: 28px; }
   .taller:last-child { border-bottom: 1px solid var(--line); }
@@ -94,12 +108,7 @@
   .trayectoria-item p { color: var(--ink-soft); font-size: 15px; margin: 0; }
   @media (max-width: 620px) { .trayectoria-grid { grid-template-columns: 1fr; } }
 
-  .medios-block { background: var(--bone-deep); padding: 44px; border-radius: 6px; }
-  .medios-block h3 { font-size: 26px; font-style: italic; font-weight: 500; }
-  .medios-block p { margin-top: 16px; color: var(--ink-soft); font-size: 16px; max-width: 62ch; }
-  @media (max-width: 620px) { .medios-block { padding: 28px; } }
-
-  .contacto { background: var(--olive-deep); color: var(--bone); padding: 84px 0; }
+  .contacto { background: var(--olive-deep); color: var(--bone); padding: 84px 0; position: relative; overflow: hidden; }
   .contacto .section-head p { color: var(--olive-pale); }
   .contacto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
   @media (max-width: 720px) { .contacto-grid { grid-template-columns: 1fr; } }
@@ -124,7 +133,7 @@
   .btn-donar { border: 1px solid var(--bone); color: var(--bone); }
   .btn-donar:hover { background: var(--bone); color: var(--olive-deep); }
 
-  .footer { padding: 40px 0; background: var(--ink); color: var(--bone-deep); }
+  .footer { padding: 40px 0; background: var(--ink); color: var(--bone-deep); position: relative; overflow: hidden; }
   .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 14px; }
   .socials { display: flex; gap: 12px; }
   .social-badge { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(245, 240, 230, 0.4); display: flex; align-items: center; justify-content: center; color: var(--bone-deep); text-decoration: none; transition: border-color 0.2s ease, color 0.2s ease; }
@@ -212,9 +221,9 @@ function PerfilProfesional() {
 
   const talleres = [
     {
-      titulo: "TDAH: una mirada desde la salud pública",
+      titulo: "Trastorno por Déficit de Atención e Hiperactividad (TDAH)",
       texto:
-        "El trastorno por déficit de atención e hiperactividad explicado más allá de lo clínico: su relación con la educación, el empleo y el contexto social a lo largo de la vida.",
+        "El trastorno por déficit de atención e hiperactividad explicado con una perspectiva de salud pública más allá de lo clínico: su relación con la educación, el empleo, el entorno, la familia y el contexto social a lo largo de la vida.",
     },
     {
       titulo: "Salud pública y determinantes sociales de la salud",
@@ -222,7 +231,7 @@ function PerfilProfesional() {
         "Marco conceptual de los determinantes sociales y su aplicación práctica al diseño de programas, servicios e intervenciones comunitarias.",
     },
     {
-      titulo: "Participación ciudadana y procesos legislativos",
+      titulo: "Participación Ciudadana, Procesos Legislativos y Política Pública (PPP)",
       texto:
         "Cómo incidir en la política pública desde la ciudadanía: seguimiento de medidas, vistas públicas y estrategias de cabildeo con enfoque comunitario.",
     },
@@ -259,18 +268,34 @@ function PerfilProfesional() {
       </nav>
 
       <header className="hero" id="inicio">
+        <div className="deco-dots" style={{ bottom: 8, left: 2 }}>
+          <span className="deco-dot" />
+          <span className="deco-dot" />
+          <span className="deco-dot" />
+        </div>
+        <div className="deco-line" style={{ width: 1, height: 60, top: 10, right: 60, transform: "rotate(18deg)" }} />
         <div className="container hero-grid hero-fade">
           <div>
             <div className="status-row">
               <span className="status-dot" />
               Disponible para talleres y colaboraciones
             </div>
-            <h1>Educación que despierta conciencia. Conciencia que impulsa acción.</h1>
+            <h1>Conocimiento para despertar conciencia, conciencia para orientar la acción, acción para defender el bienestar colectivo.</h1>
             <p className="hero-sub">
-              Soy Ariana Carreras Espinosa, estudiante doctoral en Salud Pública con
-              especialidad en Determinantes Sociales de la Salud. Facilito talleres,
-              analizo política pública y acompaño procesos de participación
-              ciudadana en Puerto Rico.
+              Soy Ariana Carreras Espinosa, salubrista de profesión y estudiante
+              doctoral en Salud Pública con especialidad en Determinantes Sociales
+              de la Salud. Mi trabajo parte de comprender cómo las condiciones en
+              las que vivimos y las decisiones de política pública influyen en
+              nuestra salud.
+            </p>
+            <p className="hero-sub">
+              Creo que la educación es la base que fortalece cualquier sociedad.
+              Es por ello que aporto desde mi trinchera facilitando talleres sobre
+              temas específicos, analizando política pública y acompañando
+              procesos de participación ciudadana en Puerto Rico. Mi propósito es
+              que el conocimiento nos permita cuestionar nuestra realidad y
+              participar en las decisiones que afectan nuestro bienestar
+              colectivo, poniendo mi conocimiento al servicio de mi gente.
             </p>
             <div className="hero-actions">
               <a className="btn btn-solid" href="#contacto">Solicitar un taller</a>
@@ -279,19 +304,49 @@ function PerfilProfesional() {
           </div>
           <div className="badge-wrap">
             <div className="badge-ring" />
-            <div className="badge">AC</div>
+            <div className="badge">ACE</div>
           </div>
         </div>
       </header>
 
-      <section className="credenciales" id="credenciales">
+      <section className="credenciales" id="credenciales" style={{ position: "relative", overflow: "hidden" }}>
+        <div className="deco-dots" style={{ top: 24, right: 40 }}>
+          <span className="deco-dot" />
+          <span className="deco-dot" />
+        </div>
         <div className="container">
-          <div className="cred-item"><strong>Maestría en Ciencias, Salud Pública</strong></div>
-          <div className="cred-item">Estudiante doctoral en Salud Pública — especialidad en Determinantes Sociales de la Salud</div>
+          <h2 className="cred-heading">Credenciales</h2>
+          <div className="cred-list">
+            <div className="cred-row">
+              <span className="cred-dot" />
+              <div className="cred-text">
+                <strong>Maestría en Ciencias (MS)</strong>
+              </div>
+            </div>
+            <div className="cred-row">
+              <span className="cred-dot" />
+              <div className="cred-text">
+                <strong>Maestría en Salud Pública (MPH)</strong>
+              </div>
+            </div>
+            <div className="cred-row">
+              <span className="cred-dot cred-dot-active" />
+              <div className="cred-text">
+                <strong>Estudiante Doctoral en Salud Pública con especialidad en Determinantes Sociales de la Salud (DrPH-DSS)</strong>
+                <span>En curso</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="section" id="talleres">
+        <div className="deco-ring" style={{ width: 260, height: 260, top: -100, right: -90 }} />
+        <div className="deco-dots" style={{ bottom: 30, left: 4 }}>
+          <span className="deco-dot" />
+          <span className="deco-dot" />
+          <span className="deco-dot" />
+        </div>
         <div className="container">
           <div className="section-head">
             <h2>Talleres</h2>
@@ -307,6 +362,12 @@ function PerfilProfesional() {
       </section>
 
       <section className="section" id="trayectoria" style={{ paddingTop: 0 }}>
+        <div className="deco-ring deco-ring-clay" style={{ width: 170, height: 170, bottom: -70, left: -70 }} />
+        <div className="deco-dots" style={{ top: 90, right: 10 }}>
+          <span className="deco-dot" />
+          <span className="deco-dot" />
+          <span className="deco-dot" />
+        </div>
         <div className="container">
           <div className="section-head">
             <h2>Trayectoria</h2>
@@ -324,22 +385,93 @@ function PerfilProfesional() {
       </section>
 
       <section className="section" id="medios" style={{ paddingTop: 0 }}>
+        <div className="deco-ring" style={{ width: 220, height: 220, top: -80, left: -80 }} />
+        <div className="deco-ring deco-ring-clay" style={{ width: 110, height: 110, bottom: 20, right: -40 }} />
         <div className="container">
           <div className="section-head">
             <h2>Participación en medios</h2>
           </div>
-          <div className="medios-block">
-            <h3>Radio Isla</h3>
-            <p>
-              Ha participado como invitada para conversar sobre el aniversario del
-              11 de septiembre, los procesos legislativos en Puerto Rico y el
-              debate público en torno a las vacunas.
-            </p>
+          <div className="medios-sub" style={{ marginTop: 0 }}>
+            <h3 className="cred-heading">Radio</h3>
+            <div className="cred-list">
+              <div className="cred-row">
+                <span className="cred-dot" />
+                <div className="cred-text">
+                  <strong>Radio Isla</strong>
+                  <span>
+                    Participación como invitada para conversar sobre el aniversario
+                    del 11 de septiembre, los procesos legislativos en Puerto Rico
+                    y el debate público en torno a las vacunas.
+                  </span>
+                </div>
+              </div>
+              <div className="cred-row">
+                <span className="cred-dot" />
+                <div className="cred-text">
+                  <strong>Foro Vivienda (2025)</strong>
+                  <span>
+                    Participación en el Foro Vivienda que se suscitó en el 2025,
+                    conversando sobre las asistencias sociales para vivienda en
+                    Puerto Rico: su historia y los grupos de edad más afectados.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="medios-sub">
+            <h3 className="cred-heading">Podcasts</h3>
+            <div className="cred-list">
+              <div className="cred-row">
+                <span className="cred-dot" />
+                <div className="cred-text">
+                  <strong>Vivienda y educación</strong>
+                </div>
+              </div>
+              <div className="cred-row">
+                <span className="cred-dot" />
+                <div className="cred-text">
+                  <strong>¿Qué es la salud pública? La importancia de conocerla en nuestra sociedad</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="medios-sub">
+            <h3 className="cred-heading">Columnas en El Nuevo Día</h3>
+            <div className="cred-list">
+              <div className="cred-row">
+                <span className="cred-dot" />
+                <div className="cred-text">
+                  <strong>Vivienda, Puerto Rico en la encrucijada: ¿dónde están las prioridades?</strong>
+                </div>
+              </div>
+              <div className="cred-row">
+                <span className="cred-dot" />
+                <div className="cred-text">
+                  <strong>Una política pública incompleta e inconsulta</strong>
+                </div>
+              </div>
+              <div className="cred-row">
+                <span className="cred-dot" />
+                <div className="cred-text">
+                  <strong>Cuando la vivienda se convierte en negocio</strong>
+                </div>
+              </div>
+              <div className="cred-row">
+                <span className="cred-dot" />
+                <div className="cred-text">
+                  <strong>Culpar a los padres: la urgencia de mirar causas estructurales de la violencia</strong>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="contacto" id="contacto">
+        <div className="deco-ring deco-ring-light" style={{ width: 300, height: 300, top: -120, right: -110 }} />
+        <div className="deco-ring deco-ring-light" style={{ width: 130, height: 130, bottom: -50, right: 140 }} />
         <div className="container">
           <div className="section-head">
             <h2>Conversemos</h2>
@@ -402,6 +534,7 @@ function PerfilProfesional() {
       </section>
 
       <footer className="footer">
+        <div className="deco-ring deco-ring-light" style={{ width: 150, height: 150, bottom: -70, left: -50 }} />
         <div className="container footer-row">
           <div>
             <div className="footer-note">© {new Date().getFullYear()} Ariana Carreras Espinosa</div>
