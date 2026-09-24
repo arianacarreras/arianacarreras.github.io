@@ -311,6 +311,10 @@ function PerfilProfesional() {
 
         a { color: inherit; }
 
+        @media (max-width: 480px) {
+          .container { padding: 0 20px; }
+        }
+
         /* ---------- NAV ---------- */
         .nav {
           display: flex;
@@ -338,7 +342,8 @@ function PerfilProfesional() {
         .nav-links a:hover { color: var(--olive-deep); }
 
         @media (max-width: 620px) {
-          .nav-links { gap: 16px; font-size: 13px; }
+          .nav { padding: 20px 20px; flex-wrap: wrap; row-gap: 10px; }
+          .nav-links { gap: 12px; font-size: 12.5px; flex-wrap: wrap; }
         }
 
         /* ---------- HERO ---------- */
@@ -499,6 +504,7 @@ function PerfilProfesional() {
         }
         .podcast-frame-outer.no-plaque {
           width: 250px;
+          max-width: 100%;
           padding-bottom: 16px;
           margin-bottom: 0;
         }
@@ -566,6 +572,7 @@ function PerfilProfesional() {
         @media (max-width: 620px) {
           .podcast-row { flex-direction: column-reverse; align-items: center; gap: 22px; }
           .podcast-frame-outer { width: 88%; max-width: 340px; transform: rotate(-1deg); }
+          .podcast-frame-outer.no-plaque { width: 78%; max-width: 250px; }
         }
         .cred-list {
           position: relative;
